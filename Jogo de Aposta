@@ -1,0 +1,45 @@
+import random as rd
+
+print("BEM VINDO A NOSSO JOGO DE APOSTA")
+print("="*20)
+comp = rd.randint(1,12)
+credito_c = 10
+aposta_c_new = rd.randint(1,credito_c)
+
+credito_p = 10
+aposta_p =int(input(f"Você possui {credito_p} créditos.\n Informe sua aposta \n Ou coloque '0' para sair. \n"))
+print("="*20)
+pessoa=int(input("Escolha um numero de 1 a 12: \n"))
+print("="*20)
+while True:
+    if comp == aposta_p and credito_p != 0:
+        print(f"Você ganho \n A maquina jogou {comp}.")
+        print(f"Você ganhou {aposta_c_new} creditos")
+        print("="*20)
+        credito_p = credito_p + aposta_c_new
+        credito_c = credito_c - aposta_c_new
+        comp = rd.randint(1,12)
+        aposta_p =int(input(f"Você possui {credito_p} créditos.\n Informe sua aposta. \n Ou coloque '0' para sair \n"))
+        print("="*20)
+        pessoa=int(input("Escolha um numero de 1 a 12: \n"))
+    elif credito_p == 0:
+        print("Sem crédito para jogar")
+        print("="*20)
+        break
+    elif comp != pessoa and aposta_p != 0:
+        print(f"Você perdeu!\n A maquina jogou {comp}.")
+        print("="*20)
+        print(f"Você perdeu {aposta_p} creditos.")
+        print("="*20)
+        credito_c = credito_c + aposta_p
+        credito_p = credito_p - aposta_p
+        comp = rd.randint(1,12) 
+        aposta_p =int(input(f"Você possui {credito_p} créditos.\n Informe sua aposta \n Ou coloque '0' para sair \n"))
+        print("="*20)
+        pessoa=int(input("Escolha um numero de 1 a 12: \n"))
+        print("="*20)
+    else:
+        print("Saindo do jogo")
+        print(f"Você terminou com {credito_p} creditos.")
+        break
+        
