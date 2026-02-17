@@ -1,0 +1,67 @@
+import json
+
+pessoas_cad = {}
+lista_pessoas = [list(pessoas_cad.keys())]
+lista_pessoas.sort()
+
+with open ("pessoas.json", "w", encoding="utf-8") as arquivo:
+    json.dump(pessoas_cad, arquivo, indent=4, ensure_ascii=False)
+
+
+class Pessoa:
+    def __init__ (self, nome=None, cel=None, end=None, nasc=None):
+        self.nome = nome
+        self.cel = cel
+        self.end = end
+        self.nasc = nasc
+    def cadastrar(self):
+        self.nome = input("Digite seu nome: \n").title()
+        self.nome = self.nome.strip()
+        print("-" * 30)
+        self.cel = input("Digite seu número de celular: \n")
+        self.cel = self.cel[:2] + " " + self.cel[2:7] + "-" + self.cel[7:]
+        print("-" * 30)
+        self.end = input("Digite seu endereço: \n").title()
+        print("-" * 30)
+        self.nasc = input("Digite sua data de nascimento (dd/mm/aaaa): \n")
+        self.nasc = self.nasc[:2] + "/" + self.nasc[2:4] + "/" + self.nasc[4:]
+        print("-" * 30)
+        pessoas_cad[self.nome] = {"celular": self.cel, "endereço": self.end, "nascimento": self.nasc}
+        lista_pessoas.append(self.nome)
+        with open ("pessoas.json", "w", encoding="utf-8") as arquivo:
+            json.dump(pessoas_cad, arquivo, indent=4, ensure_ascii=False)
+        print("-" * 30)
+        print(f"{self.nome} cadastrado com sucesso!")
+        return
+    def __str__(self):
+        return f"Nome: {self.nome}, Celular: {self.cel}, Endereço: {self.end}, Nascimento: {self.nasc}"
+
+pes = Pessoa()
+
+def listar():
+    if len(lista_pessoas) == 0:
+        print("Nenhuma pessoa cadastrada.")
+    else:
+        print("Pessoas cadastradas:")
+        print("-" * 30)
+        for i, nome in enumerate(lista_pessoas):
+            print(f"{i+1}. {nome}")
+            print("-" * 30)
+
+opcao = input("1. Cadastrar pessoa\n2. Listar pessoas cadastradas\n3. Sair\nDigite a opção desejada: \n")
+print("-" * 30)
+
+while opcao != "3":
+    if opcao == "1":
+        pes = Pessoa()
+        pes.cadastrar()
+        
+    elif opcao == "2":
+        listar()
+    
+    else:
+        print("Opção inválida.")
+    opcao = input("1. Cadastrar pessoa\n2. Listar pessoas cadastradas\n3. Sair\nDigite a opção desejada: \n")
+else:
+    print("Encerrando o programa. Até mais!")
+    
