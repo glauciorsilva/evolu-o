@@ -1,0 +1,18 @@
+print("Calculadora de calorias")
+print('*'*30)
+nome= input('Informe seu nome:\n').title().strip()
+while True:
+    try:
+        peso = float(input('Informe seu peso:\n'))
+        break
+    except ValueError:
+        print('Entrada inválda.\nInforme um numero')
+        
+cal = peso * 20
+proteina = peso * 2
+agua = peso * 35
+print('*'*30)
+print(f'''Ola, {nome}!
+A quantidade de calorias que devem ser ingeridas são: {cal}kal.
+A quantidade de proteínas é: {proteina}gr
+A quantidade de água é: {agua/1000:.2f}litros''')
