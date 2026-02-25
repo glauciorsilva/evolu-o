@@ -1,0 +1,101 @@
+import random as rd
+from time import sleep as sl
+import os
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+opcao = ['Pedra', 'Papel', 'Tesoura', 'Sair']
+
+maquina = opcao[rd.randint(0,2)]
+
+credito = 10
+user = opcao[int(input("""Escola uma opção:
+0. Pedra
+1. Papel
+2. Tesoura
+3. Sair
+"""))]
+
+sl(1)
+print('Jo...')
+sl(1)
+print('Kem...')
+sl(1)
+print('Pô...')
+sl(1)
+
+while True:
+    
+    if maquina == opcao[0] and user == opcao[1]:
+        print(f'''Você ganhou!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        credito += 1
+        print(f'\nVocê esta com: {credito} creditos!\n')
+    elif maquina == opcao[1] and user == opcao[2]:
+        print(f'''Você ganhou!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        credito += 1
+        print(f'\nVocê esta com: {credito} creditos!\n')
+    elif maquina == opcao[2] and user == opcao[0]:
+        print(f'''Você ganhou!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        credito += 1
+        print(f'\nVocê esta com: {credito} creditos!\n')
+        
+    elif maquina == opcao[0] and user == opcao[2]:
+        print(f'''Você perdeu!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        credito -= 1
+        print(f'\nVocê esta com: {credito} creditos!\n')
+    elif maquina == opcao[1] and user == opcao[0]:
+        print(f'''Você perdeu!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        credito -= 1
+        print(f'\nVocê esta com: {credito} creditos!\n')
+    elif maquina == opcao[2] and user == opcao[1]:
+        print(f'''Você perdeu!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        credito -= 1
+        print(f'\nVocê esta com: {credito} creditos!\n')
+        
+    elif user == opcao[3]:
+        break
+        
+    else:
+        print(f'''Empatou!
+        A maquina escolheu: {maquina}.
+        O jogador esclhoeu: {user}.''')
+        print(f'\nVocê esta com: {credito} creditos!\n')
+
+    
+        
+    maquina = opcao[rd.randint(0,2)]
+    sl(2)
+    limpar_tela()
+
+    user = opcao[int(input("""Escola uma opção:
+    0. Pedra
+    1. Papel
+    2. Tesoura
+    3. Sair
+    """))]
+    if user == opcao[3]:
+        break
+    sl(1)
+    print('Jo...')
+    sl(1)
+    print('Kem...')
+    sl(1)
+    print('Pô...')
+
+        
+
+    
+    
