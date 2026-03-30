@@ -1,0 +1,28 @@
+from random import randint
+
+vitoria = 0
+
+print(f'{' Par ou Impar ':*^23}')
+
+for jogadas in range(1,4):
+    comp = randint(1,10)
+    while True:
+        try:
+            user = int(input("Digite um numero: "))
+            break
+        except ValueError:
+            print("Apenas número!")
+            
+    escolha = input("Par ou Impar? [P/I]").strip().upper()[0]
+    soma = comp + user
+    if soma % 2 == 0 and escolha == "P" or soma % 2 == 1 and escolha == "I":  
+        vitoria += 1
+        print("Você venceu")
+        print(f"A maquina jogou: {comp}\nVocê escolheu: {user} e {escolha}")
+        print('x'*20)
+    else:
+        print("Você perdeu!")
+        print(f"A maquina jogou: {comp}\nVocê escolheu: {user} e {escolha}")
+print(f'''{'x'*20}
+Você ganhou {vitoria} vezez''')
+print('Vitorioso' if vitoria >= 2 else 'Não foi dessa vez!')
