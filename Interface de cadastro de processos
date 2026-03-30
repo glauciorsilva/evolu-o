@@ -1,0 +1,69 @@
+import tkinter as tk
+from tkinter import messagebox
+import os
+import openpyxl
+from openpyxl import Workbook
+
+pasta = Workbook()
+planilha = pasta.active
+planilha.title = 'Cadastro Simples'
+planilha.append(['Nome', 'Beneficio', 'CPF', 'Sessão'])
+pasta.save('cadastro_simples.xlsx')
+
+def cadastrar():
+    nome = entry_nome.get()
+    nome.title()
+    nome.strip()
+    beneficio = entry_beneficio.get()
+    cpf = entry_cpf.get()
+    sessao = entry_sessao.get()
+
+    if not nome or not beneficio or not cpf:
+        messagebox.showerror("Erro", "Por favor, preencha todos os campos.")
+        return
+
+    beneficio_formatado = f"{beneficio[:3]}.{beneficio[3:6]}.{beneficio[6:9]}/{beneficio[9:]}"
+    cpf_formatado = f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
+    
+    planilha.append([nome, beneficio_formatado, cpf_formatado, sessao])
+    pasta.save('cadastro_simples.xlsx')
+    
+    messagebox.showinfo("Sucesso!", f"Cadastro de {nome} realizado com sucesso!")
+    entry_nome.delete(0, tk.END)
+    entry_beneficio.delete(0, tk.END)
+    entry_cpf.delete(0, tk.END)
+    entry_sessao.delete(0, tk.END)
+
+root = tk.Tk()
+root.title("Cadastro Simples")
+root.geometry("600x300")
+root.configure(bg="black")
+
+
+# Labels
+label_titulo = tk.Label(root, text="Cadastro Simples", bg="black", fg="white", font=("Arial", 16, "bold"))
+label_titulo.grid(row=0, column=0, columnspan=2, pady=10)
+label_nome = tk.Label(root, text="Nome:", bg="black", fg="white", font=("Arial", 12))
+label_nome.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+label_beneficio = tk.Label(root, text="Benefício:", bg="black", fg="white", font=("Arial", 12))
+label_beneficio.grid(row=2, column=0, padx=10, pady=10, sticky="w")
+label_cpf = tk.Label(root, text="CPF:", bg="black", fg="white", font=("Arial", 12))
+label_cpf.grid(row=3, column=0, padx=10, pady=10, sticky="w")
+label_sessao = tk.Label(root, text="Sessão:", bg="black", fg="white", font=("Arial", 12))
+label_sessao.grid(row=4, column=0, padx=10, pady=10, sticky="w")
+
+# Entry fields
+entry_nome = tk.Entry(root, bg="white", fg="black", width=80)
+entry_nome.grid(row=1, column=1, padx=10, pady=10)
+entry_beneficio = tk.Entry(root, bg="white", fg="black", width=45)
+entry_beneficio.grid(row=2, column=1, padx=10, pady=10)
+entry_cpf = tk.Entry(root, bg="white", fg="black", width=45)
+entry_cpf.grid(row=3, column=1, padx=10, pady=10)
+entry_sessao = tk.Entry(root, bg="white", fg="black")
+entry_sessao.grid(row=4, column=1, padx=10, pady=10)
+
+# Button
+button_cadastrar = tk.Button(root, text="Cadastrar", command=cadastrar, bg="blue", fg="white", font=("Arial", 12), width=20)
+button_cadastrar.grid(row=5, column=1, columnspan=2, pady=10)
+
+root.mainloop()
