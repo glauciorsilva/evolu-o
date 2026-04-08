@@ -1,0 +1,77 @@
+import tkinter as tk
+from tkinter import messagebox
+
+def dados():
+    try:
+        peso = float(e_peso.get())
+    except ValueError:
+        messagebox.showerror("Erro", "Por favor, insira um valor válido para o peso.")
+        return
+    try:
+        altura = float(e_altura.get())
+    except ValueError:
+        messagebox.showerror("Erro", "Por favor, insira um valor válido para a altura.")
+        return
+    imc = peso / (altura ** 2)
+    if imc < 18.5:
+        resultado = "Abaixo do peso"
+    elif 18.5 <= imc < 25:
+        resultado = "Peso normal"
+    elif 25 <= imc < 30:   
+        resultado = "Sobrepeso"
+    else:
+        resultado = "Obesidade"
+    
+    proteina = peso * 1.2
+    agua = (peso * 35) / 1000
+    carboidrato = peso * 2
+    gordura = peso * 0.8
+    
+    l_proteina.config(text=f"Proteína: {proteina:.2f}g")
+    l_agua.config(text=f"Água: {agua:.2f}l")
+    l_carboidrato.config(text=f"Carboidrato: {carboidrato:.2f}g")
+    l_gordura.config(text=f"Gordura: {gordura:.2f}g")
+    messagebox.showinfo("IMC", f"Seu IMC: {imc:.2f}\n{resultado}")
+    
+    e_peso.delete(0, tk.END)
+    e_altura.delete(0, tk.END)
+
+
+janela = tk.Tk()
+janela.title("Calculadora de Peso")
+janela.geometry("700x300")
+janela.configure(bg="black")
+
+titulo = tk.Label(janela, text="Calculadora de Peso", bg="black", fg="white", font=("Arial", 20))
+titulo.grid(row=0, column=2, columnspan=2, pady=10)
+
+l_peso = tk.Label(janela, text="Peso", bg="black", fg="red", font=("Arial", 16))
+l_peso.grid(row=1, column=1, padx=10, pady=5)
+
+e_peso = tk.Entry(janela, fg="red", font=("Arial", 16))
+e_peso.grid(row=1, column=2, padx=10, pady=5)
+
+l_altura = tk.Label(janela, text="Altura", bg="black", fg="red", font=("Arial", 16))
+l_altura.grid(row=2, column=1, padx=10, pady=5 )
+
+e_altura = tk.Entry(janela, fg="red", font=("Arial", 16))
+e_altura.grid(row=2, column=2, padx=10, pady=5)
+
+l_proteina = tk.Label(janela, text="Proteína: 0g", bg="black", fg="red", font=("Arial", 16))
+l_proteina.grid(row=3, column=1, padx=10, pady=5)
+
+l_agua = tk.Label(janela, text="Água: 0l", bg="black", fg="red", font=("Arial", 16))
+l_agua.grid(row=3, column=3, padx=10, pady=5)
+
+l_carboidrato = tk.Label(janela, text="Carboidrato: 0g", bg="black", fg="red", font=("Arial", 16))
+l_carboidrato.grid(row=4, column=1, padx=10, pady=5)
+
+l_gordura = tk.Label(janela, text="Gordura: 0g", bg="black", fg="red", font=("Arial", 16))
+l_gordura.grid(row=4, column=3, padx=10, pady=5)
+
+b_calcular = tk.Button(janela, text="Calcular", bg="#341539", fg="red", command=dados, font=("Arial", 18))
+b_calcular.grid(row=5, column=2,rowspan=2, columnspan=2, pady=5)
+
+janela.mainloop()
+
+
