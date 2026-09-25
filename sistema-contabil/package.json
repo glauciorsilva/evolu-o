@@ -1,0 +1,12 @@
+{
+  "name": "sistema-contabil-estudo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema de contabilidade online para estudo: plano de contas, partidas dobradas, livros e demonstrações.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "validar": "node scripts/validar-dados-publicos.mjs",
+    "servir": "python3 -m http.server 8080"
+  }
+}

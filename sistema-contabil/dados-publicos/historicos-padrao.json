@@ -1,0 +1,21 @@
+{
+  "versao": "1.0.0",
+  "descricao": "Históricos padronizados para agilizar os lançamentos.",
+  "historicos": [
+    {"codigo": "001", "texto": "Integralização de capital social"},
+    {"codigo": "002", "texto": "Compra de mercadorias conforme NF nº"},
+    {"codigo": "003", "texto": "Venda de mercadorias conforme NF nº"},
+    {"codigo": "004", "texto": "Baixa do custo das mercadorias vendidas"},
+    {"codigo": "005", "texto": "Pagamento a fornecedor ref. NF nº"},
+    {"codigo": "006", "texto": "Recebimento de cliente ref. NF nº"},
+    {"codigo": "007", "texto": "Pagamento de aluguel do mês"},
+    {"codigo": "008", "texto": "Folha de pagamento do mês"},
+    {"codigo": "009", "texto": "FGTS sobre a folha do mês"},
+    {"codigo": "010", "texto": "Depreciação do mês"},
+    {"codigo": "011", "texto": "Tarifas bancárias do mês"},
+    {"codigo": "012", "texto": "Apuração do Simples Nacional do mês"},
+    {"codigo": "013", "texto": "Transferência entre contas bancárias"},
+    {"codigo": "014", "texto": "Depósito em dinheiro no banco"},
+    {"codigo": "015", "texto": "Apropriação de despesa antecipada"}
+  ]
+}
