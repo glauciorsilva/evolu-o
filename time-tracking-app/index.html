@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Ponto & Ganhos</title>
+  <meta name="description" content="Registre seu ponto e acompanhe o valor ganho no dia em tempo real." />
+  <meta name="theme-color" content="#1f6feb" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Ponto" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <h1>Ponto &amp; Ganhos</h1>
+      <p class="app__date" id="today-label"></p>
+    </header>
+
+    <main class="card">
+      <div class="status" id="status-badge">Pronto para iniciar</div>
+
+      <div class="earnings">
+        <span class="earnings__label">Valor ganho no dia</span>
+        <span class="earnings__value" id="earnings-value">R$ 0,00</span>
+      </div>
+
+      <div class="timer" id="timer-value">00:00:00</div>
+
+      <button class="punch-btn" id="punch-btn" type="button">
+        Iniciar Expediente
+      </button>
+
+      <div class="timeline" id="timeline"></div>
+
+      <div class="breakdown" id="breakdown">
+        <div class="breakdown__row">
+          <span>Horas normais</span>
+          <span id="normal-hours">0h 00min</span>
+        </div>
+        <div class="breakdown__row">
+          <span>Horas com adicional noturno (+20%)</span>
+          <span id="night-hours">0h 00min</span>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="reset-btn" type="button" hidden>
+        Iniciar novo dia
+      </button>
+    </main>
+
+    <footer class="app__footer">
+      <p>Valor da hora: R$ 8,50 &middot; Após 22h: +20% (R$ 10,20/h)</p>
+      <p class="app__hint" id="install-hint" hidden>
+        Dica: use o menu do navegador &rarr; "Adicionar à tela inicial" para instalar o app.
+      </p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
