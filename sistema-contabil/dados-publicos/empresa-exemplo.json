@@ -1,0 +1,21 @@
+{
+  "versao": "1.0.0",
+  "descricao": "Primeiro mês de operação de uma empresa comercial fictícia. Valores em centavos (5000000 = R$ 50.000,00).",
+  "empresa": {"nome": "Comércio Exemplo Ltda (fictícia)", "cnpj": "00.000.000/0001-00", "regime": "Simples Nacional", "inicioExercicio": "2026-01-01"},
+  "lancamentos": [
+    {"numero": 1, "data": "2026-09-01", "historico": "Integralização do capital social em dinheiro, depositado no banco", "partidas": [{"conta": "1.1.1.02", "tipo": "D", "valor": 5000000}, {"conta": "3.1.1.01", "tipo": "C", "valor": 5000000}]},
+    {"numero": 2, "data": "2026-09-02", "historico": "Compra de móveis e utensílios à vista, pago com transferência", "partidas": [{"conta": "1.2.3.01", "tipo": "D", "valor": 800000}, {"conta": "1.1.1.02", "tipo": "C", "valor": 800000}]},
+    {"numero": 3, "data": "2026-09-03", "historico": "Compra de mercadorias a prazo conforme NF 1520", "partidas": [{"conta": "1.1.3.01", "tipo": "D", "valor": 2000000}, {"conta": "2.1.1.01", "tipo": "C", "valor": 2000000}]},
+    {"numero": 4, "data": "2026-09-05", "historico": "Pagamento do aluguel de setembro", "partidas": [{"conta": "6.1.2.01", "tipo": "D", "valor": 250000}, {"conta": "1.1.1.02", "tipo": "C", "valor": 250000}]},
+    {"numero": 5, "data": "2026-09-10", "historico": "Venda de mercadorias conforme NF 001, parte à vista e parte a prazo", "partidas": [{"conta": "1.1.1.01", "tipo": "D", "valor": 600000}, {"conta": "1.1.2.01", "tipo": "D", "valor": 900000}, {"conta": "4.1.1.01", "tipo": "C", "valor": 1500000}]},
+    {"numero": 6, "data": "2026-09-10", "historico": "Baixa do custo das mercadorias vendidas conforme NF 001", "partidas": [{"conta": "5.1.1.01", "tipo": "D", "valor": 900000}, {"conta": "1.1.3.01", "tipo": "C", "valor": 900000}]},
+    {"numero": 7, "data": "2026-09-10", "historico": "Simples Nacional sobre a venda da NF 001 (alíquota de 6%)", "partidas": [{"conta": "4.2.1.05", "tipo": "D", "valor": 90000}, {"conta": "2.1.3.04", "tipo": "C", "valor": 90000}]},
+    {"numero": 8, "data": "2026-09-15", "historico": "Pagamento parcial a fornecedor com desconto obtido", "partidas": [{"conta": "2.1.1.01", "tipo": "D", "valor": 1000000}, {"conta": "1.1.1.02", "tipo": "C", "valor": 980000}, {"conta": "4.3.1.03", "tipo": "C", "valor": 20000}]},
+    {"numero": 9, "data": "2026-09-20", "historico": "Recebimento de clientes referente à NF 001", "partidas": [{"conta": "1.1.1.02", "tipo": "D", "valor": 400000}, {"conta": "1.1.2.01", "tipo": "C", "valor": 400000}]},
+    {"numero": 10, "data": "2026-09-25", "historico": "Conta de energia elétrica de setembro a pagar", "partidas": [{"conta": "6.1.2.02", "tipo": "D", "valor": 35000}, {"conta": "2.1.5.01", "tipo": "C", "valor": 35000}]},
+    {"numero": 11, "data": "2026-09-30", "historico": "Folha de pagamento de setembro com retenção de INSS do empregado", "partidas": [{"conta": "6.1.1.01", "tipo": "D", "valor": 300000}, {"conta": "2.1.2.01", "tipo": "C", "valor": 276000}, {"conta": "2.1.2.04", "tipo": "C", "valor": 24000}]},
+    {"numero": 12, "data": "2026-09-30", "historico": "FGTS sobre a folha de setembro (8%)", "partidas": [{"conta": "6.1.1.03", "tipo": "D", "valor": 24000}, {"conta": "2.1.2.03", "tipo": "C", "valor": 24000}]},
+    {"numero": 13, "data": "2026-09-30", "historico": "Depreciação mensal de móveis e utensílios (10% ao ano)", "partidas": [{"conta": "6.1.2.08", "tipo": "D", "valor": 6667}, {"conta": "1.2.3.90", "tipo": "C", "valor": 6667}]},
+    {"numero": 14, "data": "2026-09-30", "historico": "Tarifa bancária de manutenção de conta", "partidas": [{"conta": "6.2.1.02", "tipo": "D", "valor": 4500}, {"conta": "1.1.1.02", "tipo": "C", "valor": 4500}]}
+  ]
+}

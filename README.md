@@ -34,6 +34,7 @@ Construir uma base sólida para atuar em oportunidades de estágio ou nível jú
 - **Jogo de Par ou Ímpar** - prática de condições e interação com o usuário.
 - **Jokenpô** - implementação de regras e fluxo de jogo.
 - **Primeiro notebook** - primeiros passos com Jupyter Notebook.
+- **[Sistema Contábil de Estudo](sistema-contabil/)** - sistema de contabilidade online com plano de contas, lançamentos em partidas dobradas, diário, razão, balancete, DRE e balanço. Banco público em JSON no GitHub e banco privado no Firebase.
 
 ## Próximas etapas
 
@@ -52,6 +53,7 @@ Construir uma base sólida para atuar em oportunidades de estágio ou nível jú
 - Organização do repositório como diário de aprendizagem.
 - Criação de uma trilha de desenvolvimento baseada em Python, SQL, Power BI, estatística e portfólio.
 - Início do acompanhamento de vagas para identificar as competências mais exigidas pelo mercado.
+- Criação do **Sistema Contábil de Estudo**: JavaScript, Firebase (Firestore e Authentication), testes automatizados e GitHub Actions.
 
 ## Contato
 

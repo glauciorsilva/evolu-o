@@ -1,0 +1,61 @@
+rules_version = '2';
+
+// Regras do banco PRIVADO.
+// - Cada usuário autenticado só lê e grava dentro de usuarios/{seu uid}.
+// - A coleção "publico" é somente leitura (espelho opcional dos JSON do GitHub;
+//   gravação apenas pelo console/Admin SDK).
+// - Qualquer outro caminho é negado.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function eDono(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function contaValida() {
+      let c = request.resource.data;
+      return c.codigo is string
+        && c.codigo.matches('^[1-6](\\.[0-9]+)*$')
+        && c.nome is string && c.nome.size() > 0
+        && c.tipo in ['S', 'A']
+        && c.natureza in ['D', 'C'];
+    }
+
+    function lancamentoValido() {
+      let l = request.resource.data;
+      return l.data is string && l.data.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && l.historico is string && l.historico.size() > 0
+        && l.partidas is list && l.partidas.size() >= 2 && l.partidas.size() <= 100;
+      // A igualdade débitos = créditos é validada no app (js/core/contabil.js):
+      // as regras do Firestore não permitem somar os itens de uma lista.
+    }
+
+    match /usuarios/{uid} {
+      allow read, write: if eDono(uid);
+
+      match /empresas/{empresaId} {
+        allow read, delete: if eDono(uid);
+        allow create, update: if eDono(uid) && request.resource.data.nome is string;
+
+        match /contas/{codigo} {
+          allow read, delete: if eDono(uid);
+          allow create, update: if eDono(uid) && contaValida() && request.resource.data.codigo == codigo;
+        }
+
+        match /lancamentos/{lancamentoId} {
+          allow read, delete: if eDono(uid);
+          allow create, update: if eDono(uid) && lancamentoValido();
+        }
+      }
+
+      match /estudos/{estudoId} {
+        allow read, write: if eDono(uid);
+      }
+    }
+
+    match /publico/{documento=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+name: Sistema contábil
+
+on:
+  push:
+    paths: ['sistema-contabil/**', '.github/workflows/sistema-contabil.yml']
+  pull_request:
+    paths: ['sistema-contabil/**', '.github/workflows/sistema-contabil.yml']
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sistema-contabil
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Testes do núcleo contábil
+        run: npm test
+      - name: Validação do banco público (dados-publicos)
+        run: npm run validar
